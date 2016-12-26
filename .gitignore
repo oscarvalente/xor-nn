@@ -1,0 +1,14 @@
+# IDE files
+/ebin/*
+.project
+.metadata/*
+.idea/*
+*.iml/*
+*.iml
+
+# Binaries & logs
+out/*
+*.dump
+*.beam
+
+erlide.log
