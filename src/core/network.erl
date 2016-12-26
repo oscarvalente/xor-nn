@@ -71,11 +71,6 @@ create_network() ->
   create_output_layer(NetworkGraph, NumOutputNeurons, LastHiddenLayerNeurons),
   NetworkGraph#network.graph.
 
-%% Activation function
-sigmoid(Signal) -> 1/(1+math:exp(-Signal)).
-sigmoid_fun() -> fun(Z) -> sigmoid(Z) end.
-
-
 %% Layers
 
 %% Input

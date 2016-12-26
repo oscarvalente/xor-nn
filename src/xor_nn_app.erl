@@ -2,6 +2,10 @@
 
 -behaviour(application).
 
+-import(network, [
+  start/0
+]).
+
 %% Application callbacks
 -export([start/2, stop/1]).
 
@@ -11,6 +15,7 @@
 
 start(_StartType, _StartArgs) ->
   io:format("wtfff!"),
+  network:start(),
   xor_nn_sup:start_link().
 
 stop(_State) ->

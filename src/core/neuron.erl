@@ -14,7 +14,11 @@
 %% ====================================================================
 %% API functions
 %% ====================================================================
--export([create/2, feed_entry/2]).
+-export([
+  create/2,
+  sigmoid_fun/0,
+  feed_entry/2
+]).
 
 create(Name, Fun) ->
   #{
@@ -24,6 +28,8 @@ create(Name, Fun) ->
     activation_function => Fun
   }.
 
+%% Activation function
+sigmoid_fun() -> fun(Z) -> sigmoid(Z) end.
 
 feed_entry(Input, Output) -> 0.
 
@@ -32,4 +38,5 @@ feed_entry(Input, Output) -> 0.
 %% Internal functions
 %% ====================================================================
 
+sigmoid(Signal) -> 1/(1+math:exp(-Signal)).
 

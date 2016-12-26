@@ -10,6 +10,7 @@
 -author("oscarvalente").
 
 -import(neuron, [create/2]).
+-import(utils, [int_to_string/1]).
 
 %% ====================================================================
 %% API functions
@@ -24,8 +25,8 @@
 create_neurons(_, 0, LayerNeurons, _) -> LayerNeurons;
 create_neurons(NetworkGraph, NumLayerNeurons, LayerNeurons, Type) ->
   NeuronName = string:concat(Type, int_to_string(NumLayerNeurons)),
-  NewNeuron = digraph:add_vertex(NetworkGraph, neuron:create(NeuronName, sigmoid_fun())),
-  create_neurons(NetworkGraph, NumLayerNeurons - 1, lists:append([NewNeuron], LayerNeurons)).
+  NewNeuron = digraph:add_vertex(NetworkGraph, neuron:create(NeuronName, neuron:sigmoid_fun())),
+  create_neurons(NetworkGraph, NumLayerNeurons - 1, lists:append([NewNeuron], LayerNeurons), Type).
 
 append_bias_neuron(Network_Graph, LayerNeurons) ->
   lists:append(LayerNeurons, [digraph:add_vertex(Network_Graph)]).
