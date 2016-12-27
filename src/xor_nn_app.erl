@@ -14,9 +14,7 @@
 %% ===================================================================
 
 start(_StartType, _StartArgs) ->
-  io:format("wtfff!"),
-  network:start(),
-  xor_nn_sup:start_link().
+  network:start().
 
 stop(_State) ->
   ok.

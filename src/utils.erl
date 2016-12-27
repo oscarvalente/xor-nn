@@ -12,7 +12,8 @@
 %% API
 -export([
   pop_random_element/1,
-  int_to_string/1
+  int_to_string/1,
+  list_to_string/1
 ]).
 
 pop_random_element(List) ->
@@ -22,3 +23,11 @@ pop_random_element(List) ->
   PickedElement.
 
 int_to_string(Integer) -> io_lib:format("~p", [Integer]).
+
+list_to_string(StringList) -> lists:flatten(
+  io_lib:format("~p",
+    [
+      string:join([lists:flatten(StringList)], "")
+    ]
+  )
+).
